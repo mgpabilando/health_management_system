@@ -1,21 +1,17 @@
 @extends('layouts.app')
 {{------CUSTOM LOGIN------}}
 @section('content')     
-        @if (Session::get('success'))
-        {
+        {{-- @if (Session::get('success'))
             <div class="alert alert-success">
                 {{Session::get('success')}}
             </div>
-        }
         @endif
 
         @if (Session::get('fail'))
-        {
             <div class="alert alert-danger">
                 {{Session::get('fail')}}
             </div>
-        }
-        @endif 
+        @endif  --}}
 
     <section class="Login_Section">
         <div class="container log_content">
@@ -28,6 +24,24 @@
                 
                 <div class="hms-login col-md-6 d-flex align-items-center">
                     <div class="form-login p-2 d-flex justify-content-center">
+
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>
+                                        {{$error}}
+                                    </li>
+                                    @endforeach
+                                </ul>      
+                            </div>
+                        @endif  
+
+                        @if (\Session::has('success'))
+                            <div class="alert alert-success">
+                                <p>{{\Session::get('Success')}}</p>
+                            </div>
+                        @endif
 
                         <form method="POST" action="{{ route('login') }}">
                             {{ csrf_field() }}
@@ -83,12 +97,10 @@
                                     data-bs-target="#registerModal">{{ __('Register') }}
                                 </a>                            
                             </p>
-                            
                         </form>
                     </div>                   
                 </div>
             </div>   
-
     </section>
 
 <div class="modal fade" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
@@ -100,7 +112,7 @@
                     </button>
                 </div>
 
-                <form method="POST" action="{{action('UsersController@store')}}">
+                <form method="POST" action="{{action('\App\Http\Controllers\UsersController@store')}}">
                     <div class="modal-body">
                         @csrf
                         <div class="form-group row">

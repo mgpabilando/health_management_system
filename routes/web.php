@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
-use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UsersController;
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +37,4 @@ Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name(
 
 Route::post('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 
-Route::resource('user', UsersController::class);
+Route::resource('login', UsersController::class);

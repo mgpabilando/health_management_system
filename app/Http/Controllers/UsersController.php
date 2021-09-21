@@ -14,7 +14,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('Auth.register');
+        return view('Auth.login');
     }
 
     /**
@@ -22,25 +22,19 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    function store(Request $request)
     {
          //Validate Request
         $this->validate($request,[
             'name' => 'required',
             'email' => 'required|email|unique:admins',
             'password' => 'required|min:6|max:12', 
-            'password-confirm' => 'required',
         ]);
 
         $admin = new Admin;
@@ -48,6 +42,8 @@ class UsersController extends Controller
         $admin->email = $request->email;
         $admin->password = $request->password;
         $save = $admin->save();
+
+        
     }
 
     /**
