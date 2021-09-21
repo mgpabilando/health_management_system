@@ -27,7 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('Auth.login');
 });
 
 Route::get('home', [CustomAuthController::class, 'homedashboard'])->name('homedashboard'); 
@@ -37,4 +37,4 @@ Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name(
 
 Route::post('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 
-Route::resource('login', UsersController::class);
+Route::resource('user', UsersController::class);
