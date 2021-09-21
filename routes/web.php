@@ -30,11 +30,12 @@ Route::get('/', function () {
     return view('Auth.login');
 });
 
-Route::get('home', [CustomAuthController::class, 'homedashboard'])->name('homedashboard'); 
+Route::get('/login', [CustomAuthController::class, 'index'])->name('auth.login');
+Route::post('/save', [CustomAuthController::class, 'customlogin'])->name('login.custom'); 
 
-Route::get('login', [CustomAuthController::class, 'index'])->name('login');
-Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom'); 
-
-Route::post('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+Route::post('/signout', [CustomAuthController::class, 'signOut'])->name('signout');
 
 Route::resource('user', UsersController::class);
+
+Route::get('/dashboard', [CustomAuthController::class, 'homedashboard'])->name('homedashboard');
+ 

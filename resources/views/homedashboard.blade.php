@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row">
+    {{-- <div class="row">
     <div class="col-md-12 d-flex flex-row align-items-center justify-content-between header">
         <div class=" d-flex flex-row align-items-center title">
         <img src="images/macawayan logo.png" alt="irosin logo">
@@ -13,8 +13,8 @@
         <img src="images/profile.jpeg" alt="">
         </div>
     </div>
-    </div>
-    <div class="row">
+    </div> --}}
+    {{-- <div class="row">
     <div class="col-md-3 sidebar">
         <div class="d-grid flex-column menu-sidebar">
         <a class="active" href="dashboard.php"><i class="fas fa-home"></i>Dashboard</a>
@@ -27,8 +27,8 @@
         <div class="position-relative d-grid flex-column log-out">
         <a href="index.php" class="log-out"><i class="fas fa-sign-out-alt"></i>Log Out</a>
         </div>
-    </div>
-    <div class="col-md-9 content">
+    </div> --}}
+    {{-- <div class="col-md-9 content">
         <div class="dashboard-menu">
         <a href="resident_profile.php"><i class="fas fa-id-badge"></i><br>Resident Profile</a>
         <a href="health_consultation.php"><i class="fas fa-heartbeat"></i><br>Health Consultation</a>
@@ -49,6 +49,7 @@
             <p class="totsl-res"> Total Consultation </p>
         </div>
         </div>
-    </div>
+    </div> --}}
     </div>
 </div>
+@endsection

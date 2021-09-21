@@ -1,18 +1,6 @@
 @extends('layouts.app')
 {{------CUSTOM LOGIN------}}
-@section('content')     
-        {{-- @if (Session::get('success'))
-            <div class="alert alert-success">
-                {{Session::get('success')}}
-            </div>
-        @endif
-
-        @if (Session::get('fail'))
-            <div class="alert alert-danger">
-                {{Session::get('fail')}}
-            </div>
-        @endif  --}}
-
+@section('content')    
     <section class="Login_Section">
         <div class="container log_content">
             <div class="row">           
@@ -24,27 +12,15 @@
                 
                 <div class="hms-login col-md-6 d-flex align-items-center">
                     <div class="form-login p-2 d-flex justify-content-center">
-
-                        @if (count($errors) > 0)
+                        <form method="POST" action="{{ route('login.custom') }}">   
+                            @if (Session::get('fail'))
                             <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                    <li>
-                                        {{$error}}
-                                    </li>
-                                    @endforeach
-                                </ul>      
+                                <strong>{{Session::get('fail')}}</strong>
                             </div>
-                        @endif  
-
-                        @if (\Session::has('success'))
-                            <div class="alert alert-success">
-                                <p>{{\Session::get('Success')}}</p>
-                            </div>
-                        @endif
-
-                        <form method="POST" action="{{ route('login') }}">
-                            {{ csrf_field() }}
+                                
+                            @endif
+                 
+                            @csrf
                             
                             <div class="brgy-logo d-flex align-items-start justify-content-center">
                                 <img class="login-user-logo" src="images/macawayan logo.png" alt="Login" width="150" height="150">
@@ -100,72 +76,10 @@
                         </form>
                     </div>                   
                 </div>
-            </div>   
-    </section>
-
-<div class="modal fade" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="registerModal">{{ __('Create Account') }}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    </button>
-                </div>
-
-                <form method="POST" action="{{action('\App\Http\Controllers\UsersController@store')}}">
-                    <div class="modal-body">
-                        @csrf
-                        <div class="form-group row">
-                            <label for="nameInput" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-    
-                            <div class="col-md-6">
-                                <input id="nameInput" type="text" class="form-control" name="name" value="{{ old('name') }}"  autocomplete="name" autofocus>
-    
-                                <span class="invalid-feedback" role="alert" id="nameError">
-                                    <strong></strong>
-                                </span>
-                            </div>
-                        </div>
-    
-                        <div class="form-group row">
-                            <label for="emailInput" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-    
-                            <div class="col-md-6">
-                                <input id="emailInput" type="email" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email">
-    
-                                <span class="invalid-feedback" role="alert" id="emailError">
-                                    <strong></strong>
-                                </span>
-                            </div>
-                        </div>
-    
-                        <div class="form-group row">
-                            <label for="passwordInput" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-    
-                            <div class="col-md-6">
-                                <input id="passwordInput" type="password" class="form-control" name="password" required autocomplete="new-password">
-    
-                                <span class="invalid-feedback" role="alert" id="passwordError">
-                                    <strong></strong>
-                                </span>
-                            </div>
-                        </div>
-    
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-    
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                        </div>
-                    </div>  
-                </form>  
-        </div>
-    </div>
+            </div>  
+    </section> 
+    @include('Auth.register')    
+    @yield('scripts')        
 @endsection
+
 

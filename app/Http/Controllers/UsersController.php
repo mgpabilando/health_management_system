@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use Illuminate\Support\Facades\Hash;
+use Session;
+use Illuminate\Support\Facades\Auth;
+
 
 class UsersController extends Controller
 {
@@ -34,17 +38,25 @@ class UsersController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'email' => 'required|email|unique:admins',
-            'password' => 'required|min:6|max:12', 
+            'password' => 'required|confirmed|min:6|max:12',
+            'password_confirmation' => 'required|min:6|max:12' 
         ]);
 
         $admin = new Admin;
         $admin->name = $request->name;
         $admin->email = $request->email;
-        $admin->password = $request->password;
+        $admin->password = Hash::make($request->password);
         $save = $admin->save();
 
-        
-    }
+        if($save)
+        {
+            return back()->with('success', 'Successful!');   
+        }
+        else
+        {
+            return back()->with('fail', 'Failed!');
+        }
+}
 
     /**
      * Display the specified resource.

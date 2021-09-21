@@ -5,45 +5,56 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Hash;
 use Session;
-use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
 
 class CustomAuthController extends Controller
 {
-    public function index()
+    function index()
     {
-        return view('Auth.login');
+        return view('auth.login');
     }
 
-    public function customlogin (Request $request)
+    function customlogin (Request $request)
     {
-        $request->validate
-        ([
-            'email' => 'required',
-            'password' => 'required',
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6|max:12',
         ]);
 
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) 
-        {
-            return redirect()->intended('homedashboard')
-                        ->withSuccess('Signed in');
+        
+        $userinfo = Admin::where('email', '=', $request->email)->first(); 
+
+        if (!$userinfo) {
+            //return redirect()->back()->withErrors($userinfo)->withInput($request->all());
+            return back()->with('fail', 'We do not recognize your email address');
         }
-  
-        return redirect("login")->withSuccess('Login details are not valid');
+        else {
+            if (Hash::check($request->password, $userinfo->password)) {
+                $request->session()->put('LoggedUser', $userinfo->id);
+                return redirect('/dashboard');
+            }
+            else {
+                return back()->with('fail','Incorrect Password');
+            }
+        }
     }
 
-    public function homedashboard()
+
+
+    function homedashboard()
     {
-        if(Auth::check())
+        /* if(Auth::check())
         {
-            return view('Auth.homedashboard');
+            return view('homedashboard');
         }
   
-        return redirect("login")->withSuccess('You are not allowed to access');
+        return redirect("login")->withSuccess('You are not allowed to access'); */
+
+        return view('homedashboard');
     }
 
-    public function signOut() 
+    function signOut() 
     {
         Session::flush();
         Auth::logout();

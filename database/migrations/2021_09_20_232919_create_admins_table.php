@@ -19,9 +19,12 @@ class CreateAdminsTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('password-confirmation');
             $table->rememberToken();
             $table->timestamps();
+        });
+
+        Schema::table('admins', function (Blueprint $table) {
+            $table->string('password-confirmation');
         });
     }
 
@@ -33,5 +36,9 @@ class CreateAdminsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('admins');
+
+        Schema::table('admins', function($table) {
+            $table->dropColumn('password-confirmation');
+        });
     }
 }
