@@ -4,48 +4,76 @@
     <title>BMHMS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="bootstrap/css/font-awesome/css/all.css">
-    <link rel="stylesheet" href="css/dashboard_style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="font-awesome/css/all.css">
+    <link rel="stylesheet" href="css/mine.css">
     <link rel="icon" href="images\macawayan logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 </head>
-
-    <body>
-        <div class="row">
-            <div class="col-md-12 d-flex flex-row align-items-center justify-content-between header">
-                <div class=" d-flex flex-row align-items-center title">
-                <img src="images/macawayan logo.png" alt="irosin logo">
-                <p class="navbar-brand">BMHMS</p>
-                </div>
-                <div class="d-flex position-relative align-items-center account">
-                <p class="flex-shrink-1 user-name"><u>Juan Dela Cruz</u><br>NURSE</P>
-                <img src="images/profile.jpeg" alt="">
-                </div>
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div> 
+            <a href="#" class="nav_logo"> 
+                <i class='bx bx-layer nav_logo-icon'></i> 
+                <span class="nav_logo-name">BBBootstrap</span> 
+            </a>
+            <div class="nav_list">
+                <a href="#" class="nav_link active"> 
+                    <i class='bx bx-grid-alt nav_icon'></i> 
+                    <span class="nav_name">Dashboard</span> 
+                </a> 
+                <a href="#" class="nav_link">
+                    <i class='bx bx-user nav_icon'></i> 
+                    <span class="nav_name">Users</span> 
+                </a> 
+                <a href="#" class="nav_link"> 
+                    <i class='bx bx-message-square-detail nav_icon'></i> 
+                    <span class="nav_name">Messages</span> 
+                </a> 
+                <a href="#" class="nav_link"> 
+                    <i class='bx bx-bookmark nav_icon'></i> 
+                    <span class="nav_name">Bookmark</span> 
+                </a> 
+                <a href="#" class="nav_link"> 
+                    <i class='bx bx-folder nav_icon'></i> 
+                    <span class="nav_name">Files</span> 
+                </a> 
+                <a href="#" class="nav_link"> 
+                    <i class='bx bx-bar-chart-alt-2 nav_icon'></i> 
+                    <span class="nav_name">Stats</span> 
+                </a> 
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 sidebar">
-                <div class="d-grid flex-column menu-sidebar">
-                <a class="active" href="dashboard.php"><i class="fas fa-home"></i>Dashboard</a>
-                <a href="#"><i class="fas fa-map-marker-alt"></i>Purok</a>
-                <a href="#"><i class="fas fa-child"></i>Family Numbering</a>
-                <a href="#"><i class="fas fa-capsules"></i>Medicine Request</a>
-                <a href="#"><i class="fas fa-file-alt"></i>Reports</a>
-                <a href="#"><i class="fas fa-address-card"></i>Manage Account</a>
-                </div>
-                <div class="position-relative d-grid flex-column log-out">
-                <a href="index.php" class="log-out"><i class="fas fa-sign-out-alt"></i>Log Out</a>
-                </div>
-            </div>
-        </div>
-        @yield('content')
-        
+            </div> 
+            <a href="{{ route('signout')}}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();" class="nav_link"> 
+            <i class='bx bx-log-out nav_icon'></i> 
+            <span class="nav_name">SignOut</span> 
+            </a>    
+            <form id="frm-logout" action="{{ route('signout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+        </nav>
+    </div>
+    <!--Container Main start-->
+    <div class="height-100 bg-light">
+        <h4>Main Components</h4>
+    </div>
+    <!--Container Main end--> 
+        @yield('content')  
+        @yield('script')
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="/js/bootstrap.js"></script>
         <script src="/js/jquery-341.min.js"></script>
+
         
-    </body>
+
 
 </html>
 

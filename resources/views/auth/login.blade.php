@@ -13,15 +13,14 @@
                 <div class="hms-login col-md-6 d-flex align-items-center">
                     <div class="form-login p-2 d-flex justify-content-center">
                         <form method="POST" action="{{ route('login.custom') }}">   
-                            @if (Session::get('fail'))
-                            <div class="alert alert-danger">
-                                <strong>{{Session::get('fail')}}</strong>
+                            @if (Session::get('fail'))  
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                {{Session::get('fail')}}
+                                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
                             </div>
-                                
-                            @endif
-                 
+                            @endif  
+
                             @csrf
-                            
                             <div class="brgy-logo d-flex align-items-start justify-content-center">
                                 <img class="login-user-logo" src="images/macawayan logo.png" alt="Login" width="150" height="150">
                             </div>

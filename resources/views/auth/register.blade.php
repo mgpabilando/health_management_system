@@ -53,7 +53,6 @@
 @endif
 </script>
 @endsection
-<
 
 {{-- @section('scripts')
 <script>
