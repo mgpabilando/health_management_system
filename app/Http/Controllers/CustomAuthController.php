@@ -47,11 +47,9 @@ class CustomAuthController extends Controller
         /* if(Auth::check())
         {
             return view('homedashboard');
-        }
-  
-        return redirect("login")->withSuccess('You are not allowed to access'); */
-
+        } */
         return view('homedashboard');
+        //return redirect("login")->withSuccess('You are not allowed to access');
     }
 
     function signOut() 

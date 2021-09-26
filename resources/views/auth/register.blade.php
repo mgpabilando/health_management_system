@@ -8,6 +8,14 @@
                 </button>
             </div>
             <form method="POST" action="/user">
+                @if(Session::has('success'))
+                <div class="alert alert-success">
+                    {{ Session::get('success') }}
+                    @php
+                        Session::forget('success');
+                    @endphp
+                </div>
+                @endif
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -26,25 +34,27 @@
                         <span class="text-danger">@error('password'){{ $message }} @enderror</span>
                      </div>
                      <div class="form-group">
-                        <label>Password</label>
+                        <label>Confirm Password</label>
                         <input type="password" class="form-control" name="password_confirmation" placeholder="Enter password">
                         <span class="text-danger">@error('password_confirmation'){{ $message }} @enderror</span>
                      </div>
-                     <button type="submit" class="btn btn-block btn-primary">Sign Up</button>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-block">Sign Up</button>
+                    </div>
+                     
                      <br>
                 </div>  
             </form>  
         </div>
     </div>
 </div>
-
-@section('scripts')
+{{-- @section('scripts')
 <script type="text/javascript">
 @if (count($errors) > 0)
     $('#registerForm').modal('show');
 @endif
 </script>
-@endsection
+@endsection --}}
 
 {{-- @section('scripts')
 <script>

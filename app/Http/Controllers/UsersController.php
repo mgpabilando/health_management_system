@@ -50,7 +50,8 @@ class UsersController extends Controller
 
         if($save)
         {
-            return back()->with('success', 'Successful!');   
+            return redirect('/dashboard');
+            //return back()->with('success', 'Successful!');   
         }
         else
         {

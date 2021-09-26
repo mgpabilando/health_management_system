@@ -27,7 +27,7 @@
                             
                             <div class= "input-group">
                                 <i class="fa fa-user icon"></i>
-                                <input type="email" class= "form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter Username" value="{{ old('email') }}" autocomplete="email" autofocus required>
+                                <input type="email" class= "form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter Email" value="{{ old('email') }}" autocomplete="email" autofocus required>
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
