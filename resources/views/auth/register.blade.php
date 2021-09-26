@@ -7,14 +7,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
-            @if(Session::has('success'))
-            <div class="alert alert-success">
-                {{ Session::get('success') }}
-                @php
-                    Session::forget('success');
-                @endphp
-            </div>
-            @endif
             <form method="POST" action="/user">
                 @csrf
                 <div class="modal-body">
