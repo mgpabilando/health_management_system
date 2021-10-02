@@ -52,7 +52,7 @@ class CustomAuthController extends Controller
         //return redirect("login")->withSuccess('You are not allowed to access');
     }
 
-    function signOut() 
+    function signout() 
     {
         Session::flush();
         Auth::logout();

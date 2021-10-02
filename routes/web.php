@@ -33,7 +33,7 @@ Route::get('/', function () {
 Route::get('/login', [CustomAuthController::class, 'index'])->name('auth.login');
 Route::post('/save', [CustomAuthController::class, 'customlogin'])->name('login.custom'); 
 
-Route::post('/signout', [CustomAuthController::class, 'signOut'])->name('signout');
+Route::post('/signout', [CustomAuthController::class, 'signout'])->name('signout');
 
 Route::resource('user', UsersController::class);
 

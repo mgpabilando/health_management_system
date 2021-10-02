@@ -23,10 +23,10 @@
  </head>
  <body>
     @yield('content')
-
     @yield('scripts')
+    
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="/js/bootstrap.js"></script>
-    <script src="/js/jquery-341.min.js"></script>
+    <script src="/js/jquery-341.min.js"></script>    
  </body>
  </html>

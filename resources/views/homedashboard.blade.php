@@ -55,7 +55,7 @@
 </div> 
 @endsection
 
-<script>
+{{-- <script>
     document.addEventListener("DOMContentLoaded", function(event) {
 
     const showNavbar = (toggleId, navId, bodyId, headerId) =>{
@@ -94,4 +94,4 @@
 // Your code to run since DOM is loaded and ready
     });
 
- </script>
+ </script> --}}

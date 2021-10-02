@@ -1,8 +1,10 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;800&display=swap');
+*  {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+}
 
 body{
   display: flex;
@@ -47,14 +49,20 @@ body{
   border-radius: 10px 0px 0px 10px;
 }
 
-.hms-display h3{
+/* .hms-display h3{
   font-weight: bold;
   display: flex;
   justify-content: center;
   z-index: 5;
   position: absolute;
   color: #ffffff;
+} */
+
+.hms-display img{
+  width: 90%;
+  height: auto;
 }
+
 
 .hms-login{
   display: flex;
@@ -68,11 +76,12 @@ body{
 
 .alert {
   display: flex;
-  justify-content: center;
-	flex-direction: column;
   font-size: 12px;
   background-color: #f36d84;
-
+  position: absolute;
+  justify-content: center;
+  margin-left: -10px;
+  text-decoration: solid;
 }
 
 
@@ -83,7 +92,7 @@ body{
 	flex-direction: column;
 	padding:40px;
 	height: 680px;
-  margin-left: 10px;
+  margin-left: 0px;
 	text-align: center;
   background-color: #ffffff;
 }
@@ -221,41 +230,71 @@ body{
 
 
 /*MODAL*/
-/* Full-width input fields */
-/* .modal input[type=text], .modal input[type=password], .modal input[type=date]{
-  width: 90%;
-  padding: 5px 20px;
-  margin: 0px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  font-size: 14px;
+.modal-content {
+  margin: 25px auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 2px solid #888;
+  width: 45%; /* Could be more or less, depending on screen size */
+  font-size: 12px;
+  border-radius: 10px;
+   
 }
 
-.modal .modal-content select{
-  width: 80%;
-  border-radius: 5px;
+.modal .modal-title{
+  color:#000000;  
+  font-weight: bold;
+  position: absolute;
+  margin: 10px;
+  width: 90%;
+}
+
+.modal-body {
+  margin: 0px 20px;
+  position: relative;
+
+}
+
+.modal-footer{
+  justify-content: center;
+  background-color: white;  
+  display: flex;
+}
+
+/* Full-width input fields */
+.modal input[type=text], .modal input[type=password], .modal input[type=date], .modal input[type=email]{
+  width: 100%;
   padding: 5px 20px;
-  margin: 0px 0;
+  margin: 5px 0;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
-  font-size: 14px;
-} */
+  font-size: 12px;
+  border-radius: 25px;
+
+}
+
 
 /* Set a style for all buttons */
 .modal .modal-content .btn {
   background:linear-gradient(-45deg, #2ae88a 0%, #08aeea 100%) border-box;
   border-radius: 25px;  
   color: white;
-  margin-top: 15px;
   padding: 5px 20px;
   border: none;
   cursor: pointer;
-  width: 55%;
+  width: 50%;
   opacity: 0.9;
 }
 
+.modal-content .modal-body select{
+  width: 100%;
+  border-radius: 25px;
+  padding: 5px 20px;
+  margin: 0px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 14px;
+} 
 /* .modal .modal-content .btn-reg:hover {
   opacity: 0.8;
 } */
@@ -284,62 +323,37 @@ body{
   padding-top: 16px;
 } */
 
-/* The Modal (background)*/
-/*.modal {
-  display: none; 
-  position: fixed; 
-  z-index:999; 
-  left: 0;
-  top: 0;
-  width: 100%;
-  overflow: auto; 
-  background-color: rgba(0,0,0,0.4);
-  padding-top: 0px;
-}*/
 
-/* Modal Content/Box */
-.modal-content {
-  margin: 25px auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 35%; /* Could be more or less, depending on screen size */
-  padding: 5px;
-  font-size: 14px;
-  border-radius: 10px;
-  
-}
 
-.modal-header{
-  background:linear-gradient(-45deg, #2ae88a 0%, #08aeea 100%) border-box;
-}
 
-.modal .modal-title{
-  color:#ffffff;
-  
-}
 
-.modal .modal-content .form-group{
+
+/* .modal .modal-content .form-group{
   padding-top: 5px;
-  
+} */
+
+.modal .modal-content .control-label{
+  color: #000000;
   
 }
 
-.modal-footer{
+.row-space  {
+  justify-content: space-between;
+}
+
+.row {
   display: flex;
   justify-content: center;
-	flex-direction: column;
-
 }
 
-
-
-/* .modal .modal-content .info-head{
+.modal .modal-content .info-head{
   position: absolute;
-  transform: rotate(-90deg) translateX(-100px) translateY(-120px);
-  background-color: #60b61d;
+  transform: rotate(-90deg) translateX(-70px) translateY(-120px);
+  background-color: #2ae88a;
   padding: 8px 10px; 
   border-radius: 5px;
   color: #ffffff;
-} */
+}
 
 /* .modal .modal-content .in-col.col-end{
   transform: translateX(20px);

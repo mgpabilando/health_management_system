@@ -6,7 +6,8 @@
             <div class="row">           
                 <div class="hms-display col-md-6 d-flex align-items-center justify-content-center">
                     <div class="d-flex align-items-center justify-content-center" id="overlay">
-                        <h3 style="text-align:center">Barangay Macawayan Health Management System</h3>  
+                        <img src="images/HMS1.png" alt="">
+                        {{-- <h3 style="text-align:center">Barangay Macawayan Health Management System</h3>   --}}
                     </div>   
                 </div>
                 
@@ -27,7 +28,7 @@
                             
                             <div class= "input-group">
                                 <i class="fa fa-user icon"></i>
-                                <input type="email" class= "form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter Email" value="{{ old('email') }}" autocomplete="email" autofocus required>
+                                <input type="email" class= "form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter Email" value="{{ old('email') }}" autocomplete="email" required>
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -37,7 +38,7 @@
 
                             <div class= "input-group">
                                 <i class="fa fa-lock icon"></i>
-                                <input type="password" class= "form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter Password" required autocomplete="password" autofocus>
+                                <input type="password" class= "form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter Password" required autocomplete="password">
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -78,7 +79,7 @@
             </div>  
     </section> 
     @include('Auth.register')    
-    @yield('scripts')        
+    @yield('scripts')   
 @endsection
 
 
