@@ -13,7 +13,7 @@
                 
                 <div class="hms-login col-md-6 d-flex align-items-center">
                     <div class="form-login p-2 d-flex justify-content-center">
-                        <form method="POST" action="{{ route('login.custom') }}">   
+                        <form method="POST" action="{{ route('login') }}">   
                             @if (Session::get('fail'))  
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 {{Session::get('fail')}}

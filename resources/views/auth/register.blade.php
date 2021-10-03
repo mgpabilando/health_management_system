@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
-            <form method="POST" action="/user">
+            <form method="POST" action="{{ route('register') }}" {{-- id="registerForm" --}}>
                 @if(Session::has('success'))
                 <div class="alert alert-success">
                     {{ Session::get('success') }}
@@ -16,6 +16,16 @@
                     @endphp
                 </div>
                 @endif
+
+                {{-- @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif --}}
                 @csrf
                 <div class="modal-body">
                     <div class="personal-info">
@@ -38,13 +48,13 @@
                         <div class="row row-space"> 
                             <div class="form-group col-6">
                                 <label class="control-label" for="address">Address:</label>
-                                <input type="text" class="form-control" id="address">
+                                <input type="text" class="form-control" id="address" name="address">
                                 <span class="text-danger">@error('address'){{ $message }} @enderror</span>
                             </div>
 
                             <div class="form-group col-6">
                                 <label class="control-label" for="contact">Contact Number:</label>
-                                <input type="text" class="form-control" id="contact">
+                                <input type="text" class="form-control" id="contact" name="contact">
                                 <span class="text-danger">@error('contact'){{ $message }} @enderror</span>
                             </div>
                         </div>
@@ -52,13 +62,13 @@
                         <div class="row row-space">
                             <div class="form-group col-6">
                                 <label class="control-label" for="bdate">Birthdate:</label>
-                                <input type="date" class="form-control" id="bdate">
+                                <input type="date" class="form-control" id="bdate" name="bdate">
                                 <span class="text-danger">@error('bdate'){{ $message }} @enderror</span>
                             </div>
                             
                             <div class="form-group col-6">
                                 <label class="control-label" for="age">Age:</label>
-                                <input type="text" class="form-control" id="age">
+                                <input type="text" class="form-control" id="age" name="age">
                                 <span class="text-danger">@error('age'){{ $message }} @enderror</span>
                             </div>
                         </div>
@@ -76,12 +86,12 @@
                         <div class="row row-space">
                             <div class="form-group col-6">
                                 <label class="control-label" for="password">Password:</label>
-                                <input type="password" class="form-control" id="password">
+                                <input type="password" class="form-control" id="password" name="password">
                                 <span class="text-danger">@error('password'){{ $message }} @enderror</span>
                             </div>
                             <div class="form-group col-6">
                                 <label class="control-label" for="password_confirmation">Confirm Password:</label>
-                                <input type="password" class="form-control" id="password_confirmation">
+                                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
                                 <span class="text-danger">@error('password_confirmation'){{ $message }} @enderror</span>
                             </div> 
 
@@ -103,6 +113,7 @@
 
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-block">SIGN UP</button>
+                    
                 </div>
             </form>
                   
@@ -119,8 +130,9 @@
         else
             $("#CheckPasswordMatch").html("Passwords match.").css('color', 'green');
     }
-    $(document).ready(function () {
-       $("#password_confirmation").keyup(CheckPasswordMatch);
-    });
+        $(document).ready(function () {
+            $("#password_confirmation").keyup(CheckPasswordMatch);
+        });
+
     </script>
 @endsection
